@@ -1,32 +1,27 @@
 const express = require('express');
 const cors = require('cors');
-const multer = require('multer');
 const { MongoClient } = require('mongodb');
 
 const app = express();
-const PORT =  5000; // Use environment variable for port
+const PORT = process.env.PORT || 5000;
 
-// Middleware for handling CORS
+// Configure CORS to allow requests from your frontend domain
 app.use(cors({
-  origin: '*'
+  origin: 'https://personal-portfolio-8g03megof-chamuditha01s-projects.vercel.app', // Replace with your actual frontend URL
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true
 }));
-
-// Multer configuration
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
 
 // MongoDB connection URI
 const uri = 'mongodb+srv://user1:Chamu123@cluster0.alycqcg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-const dbName = 'db1'; // Replace 'your_database_name' with your actual database name
+const dbName = 'db1'; // Replace 'db1' with your actual database name
 
 // Function to get MongoDB database instance
 async function getDb() {
   const client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
   return client.db(dbName);
 }
-
-// Define production backend URL
-const productionBackendUrl = 'https://personal-portfolio-rho-ruby.vercel.app1';
 
 app.get('/getPP', async (req, res) => {
   try {
@@ -51,4 +46,6 @@ app.get('/getSkills', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
