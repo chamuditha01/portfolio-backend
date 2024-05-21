@@ -1,7 +1,6 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
@@ -22,5 +21,7 @@
     "mysql": "^2.18.1",
     "nodemon": "^3.0.3",
     "nodemailer": "^6.7.5"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
