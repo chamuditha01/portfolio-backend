@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5000;
 
 // Configure CORS to allow requests from your frontend domain
 app.use(cors({
-  origin: 'https://personal-portfolio-8g03megof-chamuditha01s-projects.vercel.app', // Replace with your actual frontend URL
+  origin: 'https://portfolio-backend-phi-three.vercel.app/', // Replace with your actual frontend URL
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
   credentials: true
