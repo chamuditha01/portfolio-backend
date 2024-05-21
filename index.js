@@ -7,7 +7,9 @@ const app = express();
 const PORT =  5000; // Use environment variable for port
 
 // Middleware for handling CORS
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 
 // Multer configuration
 const storage = multer.memoryStorage();
