@@ -5,16 +5,21 @@ const { MongoClient } = require('mongodb');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Configure CORS to allow requests from your frontend domain
+const allowedOrigins = [
+  'http://localhost:3000',  // Your local development frontend
+  'https://personal-portfolio-fb4dnm5ny-chamuditha01s-projects.vercel.app'  // Your deployed frontend
+];
+
 app.use(cors({
-  origin:'https://localhost:3000'
+  origin: allowedOrigins,
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true
 }));
 
-// MongoDB connection URI
 const uri = 'mongodb+srv://user1:Chamu123@cluster0.alycqcg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-const dbName = 'db1'; // Replace 'db1' with your actual database name
+const dbName = 'db1';
 
-// Function to get MongoDB database instance
 async function getDb() {
   const client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
   return client.db(dbName);
@@ -46,7 +51,3 @@ app.get('/getSkills', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-
-
-
