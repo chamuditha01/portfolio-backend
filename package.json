@@ -5,8 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "start-backend": "cd backend && npm start",
-    "start-frontend": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
