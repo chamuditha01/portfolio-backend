@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5000;
 
 // Configure CORS to allow requests from your frontend domain
 app.use(cors({
-  origin:'https://personal-portfolio-fb4dnm5ny-chamuditha01s-projects.vercel.app/'
+  origin:'https://localhost:3000'
 }));
 
 // MongoDB connection URI
